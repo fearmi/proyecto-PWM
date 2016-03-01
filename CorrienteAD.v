@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    18:58:51 02/29/2016 
+// Create Date:    10:11:31 03/01/2016 
 // Design Name: 
-// Module Name:    FrecAD 
+// Module Name:    CorrienteAD 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,33 +18,31 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module FrecAD(
-    //input reset, // entrada de reset
-    output [2:0] frec_out, // frecuencia de salida al selector del mux
+module CorrienteAD(
+    output [3:0] conta, // frecuencia de salida al selector del mux
     input clock, // señal de reloj
     input B_UP, // boton de aumento
     input B_DOWN //boton de disminución
     );
-reg [2:0] frec_out; //se define un reg para actualizar las cuentas
-initial
+
+reg [3:0] conta; // se define un registro para llevar la cuenta
+
+initial // inicializando el contador
 begin
-frec_out<=3'b0;
-end
+conta<=4'b0; // contador en 0000
+end 
 
 always @(posedge clock)//en cada flanco positivo de reloj
-//if (reset)//si reset en alto
-//begin
-//frec_out<=3'b0;//frec_out se inicia en cero
-//end
+
 if (B_UP)
-         if (frec_out==3'b111)
-				frec_out<=frec_out;
+         if (conta==4'b1010)
+				conta<=conta;
 			else
-				frec_out <= frec_out + 1;
+				conta <= conta + 1;
 else 
 	if (B_DOWN)
-				if (frec_out==3'b0) 
-					frec_out<=frec_out;
+				if (conta==4'b0) 
+					conta<=conta;
 				else
-					frec_out <= frec_out + 1;
+					conta<=conta-1;
 endmodule 
