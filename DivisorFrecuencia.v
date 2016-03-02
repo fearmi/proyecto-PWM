@@ -26,15 +26,21 @@ module DivisorFrecuencia(
  reg [14:0] contador ; //se define un reg llamado contador para truncar la señal del Clock de Nexys cuando llegue
                        // al valor deseado y de esa manera obtener el nuevo reloj con la nueva frecuencia
 <<<<<<< HEAD
+<<<<<<< HEAD
 							  
 
 =======
+=======
+>>>>>>> master
 initial
 begin 
 contador<=15'b0;
 Clock_out =0;
 end
 							  
+<<<<<<< HEAD
+>>>>>>> master
+=======
 >>>>>>> master
 always @(posedge Clock_in) //Especificamos la transición deseada, en cada flanco positivo de la señal  
  begin
