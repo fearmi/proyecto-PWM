@@ -22,14 +22,16 @@
 module sevenseg(
  input clock, reset,
  input [3:0]in0, in1, in2, in3,  //the 4 inputs for each display
+
  output a, b, c, d, e, f, g, dp, //the individual LED output for the seven segment along with the digital point
  output [3:0] an   // the 4 bit enable signal
  );
  
-localparam N = 18;
+localparam N = 19;
  
 reg [N-1:0]count; //the 18 bit counter which allows us to multiplex at 1000Hz
-  
+
+
 always @ (posedge clock or posedge reset)
  begin
   if (reset)
@@ -68,6 +70,7 @@ always @ (*)
      sseg = in3;
      an_temp = 4'b0111;
     end
+	 default : sseg=in0;
   endcase
  end
 assign an = an_temp;
