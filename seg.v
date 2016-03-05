@@ -35,10 +35,10 @@ always @ (posedge clock or posedge reset)
   if (reset)
    count <= 0;
   else
-   count <= count + 1'b1;
+   count <= count + 1;
  end
  
-reg [7:0]sseg; //the 7 bit register to hold the data to output
+reg [6:0]sseg; //the 7 bit register to hold the data to output
 reg [3:0]an_temp; //register for the 4 bit enable
  
 always @ (*)
@@ -76,29 +76,30 @@ always @ (*)
 assign an = an_temp;
  
  
-reg [7:0] sseg_temp; // 7 bit register to hold the binary value of each input given
+reg [6:0] sseg_temp; // 7 bit register to hold the binary value of each input given
  
 always @ (*)
  begin
   case(sseg)
-   4'd0 : sseg_temp = ~8'b11000000; //to display 0
-   4'd1 : sseg_temp = ~8'b11111001; //to display 1
-   4'd2 : sseg_temp = ~8'b10100100; //to display 2
-   4'd3 : sseg_temp = ~8'b10110000; //to display 3
-   4'd4 : sseg_temp = ~8'b10011001; //to display 4
-   4'd5 : sseg_temp = ~8'b10010010; //to display 5
-   4'd6 : sseg_temp = ~8'b10000010; //to display 6
-   4'd7 : sseg_temp = ~8'b11111000; //to display 7
-   4'd8 : sseg_temp = ~8'b10000000; //to display 8
-   4'd9 : sseg_temp = ~8'b10010000; //to display 9
-	4'd10 : sseg_temp = ~8'b01111111;
-   default : sseg_temp = ~8'b01111111; //dash
+   4'd0 : sseg_temp = 7'b1000000; //to display 0
+   4'd1 : sseg_temp = 7'b1111001; //to display 1
+   4'd2 : sseg_temp = 7'b0100100; //to display 2
+   4'd3 : sseg_temp = 7'b0110000; //to display 3
+   4'd4 : sseg_temp = 7'b0011001; //to display 4
+   4'd5 : sseg_temp = 7'b0010010; //to display 5
+   4'd6 : sseg_temp = 7'b0000010; //to display 6
+   4'd7 : sseg_temp = 7'b1111000; //to display 7
+   4'd8 : sseg_temp = 7'b0000000; //to display 8
+   4'd9 : sseg_temp = 7'b0010000; //to display 9
+	4'd10 : sseg_temp = 7'b0111111;
+   default : sseg_temp = 7'b1000000; //dash
   endcase
  end
-assign {dp,g, f, e, d, c, b, a} = sseg_temp; //concatenate the outputs to the register, this is just a more neat way of doing this.
+assign {g, f, e, d, c, b, a} = sseg_temp; //concatenate the outputs to the register, this is just a more neat way of doing this.
 // I could have done in the case statement: 4'd0 : {g, f, e, d, c, b, a} = 7'b1000000;
 // its the same thing.. write however you like it
  
+assign dp = 1'b1; //since the decimal point is not needed, all 4 of them are turned off
  
  
 endmodule
