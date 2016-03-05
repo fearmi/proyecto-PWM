@@ -23,7 +23,7 @@ input [2:0] indicador,
 output n_3,
 output [2:0]n_2,n_0,
 output [3:0]n_1
-);
+); 
 
 reg n3;
 reg [3:0]n1,n2,n0; 
