@@ -19,67 +19,71 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module Deco_f(
-input [2:0] indicador,
-output n_3,
-output [2:0]n_2,n_0,
-output [3:0]n_1
+input [2:0] indicadorFrecuenica,
+output [3:0]n_1f,n_0f,n_2f,n_3f
 );
-
+ 
 reg n3;
 reg [3:0]n1,n2,n0; 
  
-always @( indicador) 
+always @(indicadorFrecuenica) 
 begin
-case(indicador)
+case(indicadorFrecuenica)
 3'b000 :begin
-			n0 = 3'd5;
+			n0 = 4'd5;
 			n1 = 4'd10;
-			n2 = 3'd1; 
-			n3 = 1'd0;
+			n2 = 4'd1; 
+			n3 = 4'd0;
 		end
 3'b001 :begin
-			n0 = 3'd1;
+			n0 = 4'd1;
 			n1 = 4'd10;
-			n2 = 3'd3;
-			n3 = 1'd0;
+			n2 = 4'd3;
+			n3 = 4'd0;
 		end
 3'b010 :begin
-			n0 = 3'd2;
+			n0 = 4'd2;
 			n1 = 4'd10;
-			n2 = 3'd6;
-			n3 = 1'd0;
+			n2 = 4'd6;
+			n3 = 4'd0;
 		end
 3'b011 :begin 
-			n0 = 3'd5;
+			n0 = 4'd5;
 			n1 = 4'd10;
-			n2 = 3'd2;
-			n3 = 1'd1;
+			n2 = 4'd2;
+			n3 = 4'd1;
 		end
 3'b100  :begin
-			n0 = 3'd5;
+			n0 = 4'd5;
 			n1 = 4'd2;
-			n2 = 3'd0;
-			n3 = 1'd0;
+			n2 = 4'd0;
+			n3 = 4'd0;
 		end
 3'b101 :begin
-			n0 = 3'd0;
+			n0 = 4'd0;
 			n1 = 4'd5;
-			n2 = 3'd0;
-			n3 = 1'd0;
+			n2 = 4'd0;
+			n3 = 4'd0;
 		end
 3'b110 :begin
-			n0 = 3'd0;
+			n0 = 4'd0;
 			n1 = 4'd0;
-			n2 = 3'd1;
-			n3 = 1'd0;
+			n2 = 4'd1;
+			n3 = 4'd0;
 		end 
 3'b111 :begin
-			n0 = 3'd0; 
+			n0 = 4'd0; 
 			n1 = 4'd0;
-			n2 = 3'd2;
-			n3 = 1'd0;
+			n2 = 4'd2;
+			n3 = 4'd0;
 		end
+		default begin
+		 n0 = 4'd0;
+		 n1 = 4'd0;
+		 n2 = 4'd0;
+		 n3 = 4'd0;
+		 end
 endcase
 end 
-assign n_0=n0,n_1=n1,n_2=n2,n_3=n3;
+assign n_0f = n0,n_1f = n1,n_2f = n2,n_3f = n3;
 endmodule
