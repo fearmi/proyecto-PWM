@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    20:57:22 02/28/2016 
+// Create Date:    17:22:50 03/02/2016 
 // Design Name: 
-// Module Name:    Conta_10B 
+// Module Name:    Conta_15B 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,21 +18,22 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Conta_10B(
-output [9:0]Frecuencia_Conmutacion     ,  // Output of the counter
-input Enable  ,  // enable for counter
-input Clk     ,  // clock Input
-input Reset      // reset Input
+module Conta_15B(
+output [14:0] F_out,  // Output of the counter
+input enable  ,  // enable for counter
+input clk,  // clock Input
+input reset      // reset Input
 );
-reg [9:0] sal;
+reg [14:0] F_out;
 
 
-always @(posedge Clk or posedge Reset)
-if (Reset) begin
-  sal <= 10'b0 ;
-end else if(Enable) begin
-  sal <= sal + 1;
+always @(posedge clk or posedge reset)
+if (reset) begin
+  F_out <= 15'b0 ;
+end else if (enable) begin
+  F_out <= F_out + 1;
 end
 
-assign Frecuencia_Conmutacion=sal;
+
+
 endmodule

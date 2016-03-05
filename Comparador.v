@@ -24,9 +24,9 @@ module Comparador( //comparador para obtener la salida de señal de PWM
     output Out_PWM //salida de pulso con ancho modulado
     );
 	 
-	 assign Out_PWM= (Frec_Conm < Corri_Ref) ? 1'b1 : 1'b0; // asigna un 1 a la salida si la frecuencia de conmutación
+	 assign Out_PWM= (Frec_Conm <= Corri_Ref) ? 1'b1 : 1'b0; // asigna un 1 a la salida si la frecuencia de conmutación
 	                                                        // es menor a la referencia, en caso contrario asigna 0,de forma
-																			  //que se logra modelar el ciclo de trabajo estableciendo la referencia
+																		//que se logra modelar el ciclo de trabajo estableciendo la referencia
 	 
 
 
